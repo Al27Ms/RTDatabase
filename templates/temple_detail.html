@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ temple.name }}</title>
+</head>
+<body>
+    <h1>{{ temple.name }}</h1>
+    <a href="javascript:history.go(-1)">Back</a>
+    
+        {% if wikipedia_image_url %}
+        <img src="{{ wikipedia_image_url }}" alt="{{ temple.name }} image">
+    {% endif %}
+    
+    <p>ID: {{ temple.id }}</p>
+    <p>Dedicatee: {{ temple.dedicatee }}</p>
+    <p>Type: {{ temple.type }}</p>
+    <p>Setting: {{ temple.setting }}</p>
+    <p>Location: {{ temple.location }}</p>
+    <p>Modern Place: {{ temple.modernplace }}</p>
+    <p>Ancient Place: {{ temple.ancientplace }}</p>
+    <p>Pleiades Place: {{ temple.pleiadesplace }}</p>
+    <p>Country: {{ temple.country }}</p>
+    <p>Orientation: {{ temple.orientation }}</p>
+    <p>Compass: {{ temple.compass }}</p>
+    <p>Geocertainty: {{ temple.geocertainty }}</p>
+    <p>Vowed: {{ temple.vowed }}</p>
+    <p>Date: {{ temple.date }}</p>
+    <p>Start Date Early: {{ temple.startdateearly }}</p>
+    <p>Start Date Late: {{ temple.startdatelate }}</p>
+    <p>Century: {{ temple.century }}</p>
+    <p>End Date: {{ temple.enddate }}</p>
+    <p>Preceded: {{ temple.preceded }}</p>
+    <p>Succeeded: {{ temple.succeeded }}</p>
+    <p>Sex: {{ temple.sex }}</p>
+    <p>Dedication Day: {{ temple.dedicationday }}</p>
+    <p>Deity Type: {{ temple.deitytype }}</p>
+    <p>Culture: {{ temple.culture }}</p>
+    <p>Style: {{ temple.style }}</p>
+    <p>Extant: {{ temple.extant }}</p>
+    <p>Source: {{ temple.source }}</p>
+    <p>Meetings: {{ temple.meetings }}</p>
+    <p>Note: {{ temple.note }}</p>
+    <p>Vici: {{ temple.vici }}</p>
+    <p>Pleiades: {{ temple.pleiades }}</p>
+    <p>Dare: {{ temple.dare }}</p>
+    <p>Arachne: {{ temple.arachne }}</p>
+    <p>Livius: {{ temple.livius }}</p>
+     <p>Wikipedia: <a href="https://en.wikipedia.org/wiki/{{ temple.wikipedia }}">{{ temple.wikipedia }}</a></p>
+    <p>Wikidata: {{ temple.wikidata }}</p>
+    <p>Digital Roman Forum: {{ temple.digitalromanforum }}</p>
+    <p>Digitales Forum Romanum: {{ temple.digitalesforumromanum }}</p>
+    <p>Trismegistos: {{ temple.trismegistos }}</p>
+    <p>Ads: {{ temple.ads }}</p>
+    <p>Cona: {{ temple.cona }}</p>
+    <p>Topostext: {{ temple.topostext }}</p>
+    <p>SLS: {{ temple.sls }}</p>
+    <p>Patrimonium: {{ temple.patrimonium }}</p>
+    <p>URL: {{ temple.url }}</p>
+    <p>Longitude: {{ temple.longitude }}</p>
+    <p>Latitude: {{ temple.latitude }}</p>
+</body>
+</html>

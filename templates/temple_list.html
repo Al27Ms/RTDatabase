@@ -4,25 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>RTDatabase</title>
-    
-<link rel="stylesheet" href="{% static 'style.css' %}">
-
-    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <h1 class="heading">Roman Temple Database</h1>
-    
-    <form method="GET" action=".">
-        <input type="text" name="q" placeholder="Wyszukaj świątynię..." value="{{ query }}">
+    <form method="get" action="{% url 'index' %}">
+        <input type="text" name="q" placeholder="Szukaj świątyni..." value="{{ query }}">
         <button type="submit">Szukaj</button>
     </form>
-    
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-
             </tr>
         </thead>
         <tbody>
@@ -30,7 +24,6 @@
                 <tr onclick="goToDetailPage({{ row.id }})">
                     <td>{{ row.id }}</td>
                     <td><a href="{% url 'temple_detail' row.id %}">{{ row.name }}</a></td>
-                    
                 </tr>
             {% endfor %}
         </tbody>
@@ -38,8 +31,8 @@
     <div class="pagination">
         <span class="step-links">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; pierwsza</a>
-                <a href="?page={{ page_obj.previous_page_number }}">poprzednia</a>
+                <a href="?page=1{% if query %}&q={{ query }}{% endif %}">&laquo; pierwsza</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">poprzednia</a>
             {% endif %}
 
             <span class="current">
@@ -47,8 +40,8 @@
             </span>
 
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">następna</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">ostatnia &raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">następna</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">ostatnia &raquo;</a>
             {% endif %}
         </span>
     </div>

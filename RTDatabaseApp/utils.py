@@ -1,13 +1,11 @@
 import csv
 
-
-def read_csv_data(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
+def read_csv_data(file_path, encoding='utf-8'):
+    updated_data = []
+    with open(file_path, 'r', encoding=encoding) as file:
         csv_reader = csv.DictReader(file)
-        data = list(csv_reader)
+        for idx, row in enumerate(csv_reader, start=1):
+            row['id'] = str(idx)
+            updated_data.append(row)
 
-    # Przekształć wartości ID
-    for i, row in enumerate(data):
-        row['id'] = i + 1  # Zmieniamy ID na kolejne liczby naturalne
-
-    return data
+    return updated_data
