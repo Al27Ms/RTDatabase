@@ -20,3 +20,36 @@ RTDatabase is a Django project designed to manage a database of Roman temples. T
 - **Google Images API:** Used for fetching temple images.
 - **Git:** Version control system.
 - **GitHub:** Repository hosting and project management.
+
+### Getting Started
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/Al27Ms/RTDatabase.git
+   cd RTDatabase
+   ```
+
+2. **Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Set up environment variables:**
+
+- Create a .env file in the root directory.
+
+- Add your Google Maps API key and other necessary API keys:
+
+```bash
+makefile
+GOOGLE_API_KEY=your_google_api_key
+GOOGLE_SEARCH_API_KEY=your_google_search_api_key
+```
+4. **Run the development server:**
+
+```bash
+python manage.py runserver
+```
+The application will be accessible at http://localhost:8000.
