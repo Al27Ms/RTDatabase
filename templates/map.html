@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Map{% endblock %}
+
+{% block content %}
+    <style>
+    
+</style>
+    <p class="cat-text">Map of Temples</p>
+        <div class="back-button">
+        <button onclick="history.go(-1)">Back</button>
+    </div>
+    <p class="text">Map show all Roman temples from database</p>
+
+    <div id="map" style="height: 600px; width: 100%;"></div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: {lat: 41.9028, lng: 12.4964} // Center the map on Rome, Italy
+            });
+
+            var temples = {{ temples|safe }};
+            temples.forEach(function (temple) {
+                var marker = new google.maps.Marker({
+                    position: {lat: parseFloat(temple.latitude), lng: parseFloat(temple.longitude)},
+                    map: map,
+                    title: temple.name
+                });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: '<h3>' + temple.name + '</h3><p class="map-details"><a href="/temple/' + temple.id + '/">More details</a></p>'
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+
+        // Initialize map after the DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            initMap();
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}"></script>
+{% endblock %}

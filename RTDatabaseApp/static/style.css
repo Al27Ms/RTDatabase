@@ -1,0 +1,200 @@
+* {
+    font: 1.2rem "system-ui", serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h1.heading {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    padding: 0.8rem;
+}
+
+.search {
+    text-align: right;
+    padding: 0.6rem;
+}
+
+input[type=text] {
+    border: 2px solid #31473A;
+    padding: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.temple-name {
+    padding-left: 1rem;
+}
+
+button {
+    border: 2px solid #31473A;
+    padding: 0.4rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.back-button button:hover {
+    background-color: #31473A;
+    color: white;
+}
+
+.back-button {
+    padding: 0.6rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+th,
+td {
+    border: 1px solid #D0E3DD;
+    text-align: left;
+    padding: 0.8rem;
+}
+
+th {
+    background-color: #31473A;
+    color: #D0E3DD;
+    font-weight: bold;
+}
+
+th:hover {
+    cursor: default;
+}
+
+tr:nth-child(even) {
+    background-color: #D0E3DD;
+}
+
+tr:hover {
+    background-color: #31473A;
+    color: #EDF4F2;
+    cursor: pointer;
+}
+
+p {
+    padding: 0.5rem;
+}
+
+.temple-dinfo, .location-text, .wiki-link {
+    margin: 1rem;
+    border: 2px solid #31473A;
+    padding: 1rem;
+}
+
+.pagination {
+    margin: 0.6rem;
+    padding: 0.6rem;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 2px;
+    background-color: #D0E3DD;
+    color: #333;
+    text-decoration: none;
+    border: 2px solid #31473A;
+}
+
+.pagination a:hover {
+    background-color: #31473A;
+    color: #D0E3DD;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.temple-detail-container {
+    padding: 20px;
+}
+
+.temple-info {
+    margin-bottom: 20px;
+}
+
+.temple-name {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.temple-location {
+    color: #31473A;
+    font-weight: bold;
+    padding: 0.8rem;
+}
+
+.temple-image {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.gallery {
+    text-align: center;
+}
+
+.gallery img {
+    max-width: 30%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+footer {
+    margin: 0;
+    background-color: #31473A;
+    color: #D0E3DD;
+    margin-top: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-text {
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-links {
+    padding-bottom: 1.4rem;
+}
+
+h3 {
+    padding: 1rem;
+    text-align: center;
+}
+
+.map-details {
+    color: #31473A;
+    border: 2px solid #31473A;
+    text-align: center;
+}
+
+.cat-text {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.location-text, .wiki-link {
+    text-align: center;
+}
+
+.gallery-images img,.temple-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    flex: 1 1 calc(33.333% - 10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}

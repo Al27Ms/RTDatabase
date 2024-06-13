@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Info{% endblock %}
+
+{% block content %}
+    <style>
+    tr:hover {
+    cursor: default;
+}
+    p{
+        padding: 0.8rem;
+    }
+
+        .t{
+            font-size: 1.4rem;
+        }
+    </style>
+    <p class="cat-text">Informations</p>
+                <div class="back-button">
+                <button onclick="history.go(-1)">Back</button>
+            </div>
+    <div class="info-description">
+    <p>
+        The Roman Temples Database application offers detailed insights into ancient Roman temples, leveraging data sourced from Rome Research Group (https://romeresearchgroup.org). This platform allows users to explore a curated collection of temples, providing comprehensive information such as names, locations, historical significance, and architectural styles.
+    </p>
+        <p class="t">Data Source</p>
+    <p>
+    The application retrieves its data from Rome Research Group, a prominent entity in the field of Digital Humanities focused on mapping and documenting various aspects of ancient Rome and its global influence. The group's projects include mapping street shrines (edicole sacre) from the Medieval period and documenting Classical world temples, providing valuable insights into Rome's architectural heritage and cultural legacy.
+    </p>
+</div>
+    <p class="t">How the database is structured</p><br>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Definition</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attribute in attributes %}
+                <tr>
+                    <td>{{ attribute.name }}</td>
+                    <td>{{ attribute.definition }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

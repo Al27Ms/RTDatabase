@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ temple.name }}{% endblock %}
+
+{% block content %}
+    <style>
+        .id-text{
+            background-color: #31473A;
+            color: #EDF4F2;
+        }
+
+        .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+
+    </style>
+    <div class="temple-detail-container">
+        <div class="temple-info">
+            <div class="temple-name">{{ temple.name }}</div>
+            <div class="temple-location">Location:
+                {{ temple.location }}, {{ temple.modernplace }}, {{ temple.country }}
+            </div>
+
+            <div class="back-button">
+                <button onclick="history.go(-1)">Back</button>
+            </div>
+
+            
+            </p>
+
+            <div class="temple-dinfo">
+                <p class="id-text">ID: {{ temple.id }}</p>
+                {% if temple.dedicatee %}<p>Dedicatee: {{ temple.dedicatee }}</p>{% endif %}
+                {% if temple.type %}<p>Type: {{ temple.type }}</p>{% endif %}
+                {% if temple.setting %}<p>Setting: {{ temple.setting }}</p>{% endif %}
+                {% if temple.ancientplace %}<p>Ancient Place: {{ temple.ancientplace }}</p>{% endif %}
+                {% if temple.pleiadesplace %}<p>Pleiades Place: {{ temple.pleiadesplace }}</p>{% endif %}
+                {% if temple.orientation %}<p>Orientation: {{ temple.orientation }}</p>{% endif %}
+                {% if temple.compass %}<p>Compass: {{ temple.compass }}</p>{% endif %}
+                {% if temple.geocertainty %}<p>Geocertainty: {{ temple.geocertainty }}</p>{% endif %}
+                {% if temple.vowed %}<p>Vowed: {{ temple.vowed }}</p>{% endif %}
+                {% if temple.date %}<p>Date: {{ temple.date }}</p>{% endif %}
+                {% if temple.startdateearly %}<p>Start Date Early: {{ temple.startdateearly }}</p>{% endif %}
+                {% if temple.startdatelate %}<p>Start Date Late: {{ temple.startdatelate }}</p>{% endif %}
+                {% if temple.century %}<p>Century: {{ temple.century }}</p>{% endif %}
+                {% if temple.enddate %}<p>End Date: {{ temple.enddate }}</p>{% endif %}
+                {% if temple.preceded %}<p>Preceded: {{ temple.preceded }}</p>{% endif %}
+                {% if temple.succeeded %}<p>Succeeded: {{ temple.succeeded }}</p>{% endif %}
+                {% if temple.sex %}<p>Sex: {{ temple.sex }}</p>{% endif %}
+                {% if temple.dedicationday %}<p>Dedication Day: {{ temple.dedicationday }}</p>{% endif %}
+                {% if temple.deitytype %}<p>Deity Type: {{ temple.deitytype }}</p>{% endif %}
+                {% if temple.culture %}<p>Culture: {{ temple.culture }}</p>{% endif %}
+                {% if temple.style %}<p>Style: {{ temple.style }}</p>{% endif %}
+
+            </div>
+        </div>
+
+        {% if temple.wikipedia %}<p class="wiki-link">Wikipedia link: <a href="https://en.wikipedia.org/wiki/{{ temple.wikipedia }}">{{ temple.wikipedia }}</a>{% endif %}
+            
+        {% if wikipedia_image_url %}
+            <h3>Photo from Wikipedia page</h3>
+            <div class="temple-image">
+                <img src="{{ wikipedia_image_url }}" alt="{{ temple.name }} image">
+            </div>
+        {% endif %}
+
+
+        {% if temple.latitude and temple.longitude %}
+            <h3>Location of temple:</h3>
+            <p class="location-text">{{ temple.longitude }}, {{ temple.latitude }}</p>
+            <div id="map" style="height: 400px; width: 100%;"></div>
+        {% endif %}
+
+        {% if temple_images %}
+            <div class="temple-gallery">
+                <h3>Photos from Google Images</h3>
+                <div class="gallery-images">
+                    {% for image_url in temple_images %}
+                        <img src="{{ image_url }}" alt="Temple Image">
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="temple-dinfo">
+        <h3>More info:</h3>
+            {% if temple.extant %}<p>Extant: {{ temple.extant }}</p>{% endif %}
+            {% if temple.source %}<p>Source: {{ temple.source }}</p>{% endif %}
+            {% if temple.meetings %}<p>Meetings: {{ temple.meetings }}</p>{% endif %}
+            {% if temple.note %}<p>Note: {{ temple.note }}</p>{% endif %}
+            {% if temple.vici %}<p>Vici: {{ temple.vici }}</p>{% endif %}
+            {% if temple.pleiades %}<p>Pleiades: {{ temple.pleiades }}</p>{% endif %}
+            {% if temple.dare %}<p>Dare: {{ temple.dare }}</p>{% endif %}
+            {% if temple.arachne %}<p>Arachne: {{ temple.arachne }}</p>{% endif %}
+            {% if temple.livius %}<p>Livius: {{ temple.livius }}</p>{% endif %}
+            {% if temple.wikidata %}<p>Wikidata: {{ temple.wikidata }}</p>{% endif %}
+            {% if temple.digitalromanforum %}<p>Digital Roman Forum: {{ temple.digitalromanforum }}</p>{% endif %}
+            {% if temple.digitalesforumromanum %}
+                <p>Digitales Forum Romanum: {{ temple.digitalesforumromanum }}</p>{% endif %}
+            {% if temple.trismegistos %}<p>Trismegistos: {{ temple.trismegistos }}</p>{% endif %}
+            {% if temple.ads %}<p>Ads: {{ temple.ads }}</p>{% endif %}
+            {% if temple.cona %}<p>Cona: {{ temple.cona }}</p>{% endif %}
+            {% if temple.topostext %}<p>Topostext: {{ temple.topostext }}</p>{% endif %}
+            {% if temple.sls %}<p>SLS: {{ temple.sls }}</p>{% endif %}
+            {% if temple.patrimonium %}<p>Patrimonium: {{ temple.patrimonium }}</p>{% endif %}
+            {% if temple.url %}<p>URL: {{ temple.url }}</p>{% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function initMap() {
+            var lat = parseFloat('{{ temple.latitude }}');
+            var lng = parseFloat('{{ temple.longitude }}');
+
+            var location = {lat: lat, lng: lng};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+
+        // Initialize map after the DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            initMap();
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}"></script>
+{% endblock %}

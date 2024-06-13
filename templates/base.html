@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}RTDatabase{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+{% block header %}
+    <header>
+        <h1 class="heading">Roman Temple Database</h1>
+    </header>
+{% endblock %}
+<main>
+    {% block content %}
+            <!-- Main content -->
+    {% endblock %}
+</main>
+{% block footer %}
+    <style>
+    a{
+        margin: 0 1rem 0 1rem;
+    }
+    </style>
+<footer>
+    <hr>
+    <div class="footer-content">
+        <p class="footer-text">© 2024 Roman Temple Database</p>
+        <div class="footer-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'temple_list' %}">List</a>
+            <a href="{% url 'map' %}">Map</a>
+            <a href="{% url 'info' %}">Info</a>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Extra JavaScript -->
+{% endblock %}
+
+</body>
+</html>
