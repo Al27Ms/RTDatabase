@@ -4,6 +4,17 @@
 
 RTDatabase is a Django project designed to manage a database of Roman temples. The application allows users to browse a list of temples, view detailed information about individual temples, and locate them on a map. The project utilizes Django ORM to manage data stored in a CSV file and integrates external APIs such as Google Maps and Google Images.
 
+## Usage of Google APIs
+
+## Google Maps API
+The project utilizes Google Maps API to display the location of temples on an interactive map. Each temple's latitude and longitude coordinates are used to mark its position on the map, providing a visual representation of temple locations.
+
+## Google Images API
+The application also integrates Google Images API to fetch relevant images for each temple. When viewing detailed information about a specific temple, images are retrieved from Google Images based on the temple's name and location. These images supplement the temple's details and provide visual context.
+
+## Wikipedia Integration
+Additionally, the project fetches an image from Wikipedia for each temple when available. This image is sourced from the temple's Wikipedia page, enhancing the visual representation of the temple within the application.
+
 ## Features
 
 ### List of Features:
