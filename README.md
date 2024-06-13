@@ -32,9 +32,9 @@ RTDatabase is a Django project designed to manage a database of Roman temples. T
 
 2. **Install dependencies:**
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 3. **Set up environment variables:**
 
@@ -42,14 +42,14 @@ pip install -r requirements.txt
 
 - Add your Google Maps API key and other necessary API keys:
 
-```bash
-makefile
-GOOGLE_API_KEY=your_google_api_key
-GOOGLE_SEARCH_API_KEY=your_google_search_api_key
-```
+   ```bash
+   makefile
+   GOOGLE_API_KEY=your_google_api_key
+   GOOGLE_SEARCH_API_KEY=your_google_search_api_key
+   ```
 4. **Run the development server:**
 
-```bash
-python manage.py runserver
-```
+   ```bash
+   python manage.py runserver
+   ```
 The application will be accessible at http://localhost:8000.
